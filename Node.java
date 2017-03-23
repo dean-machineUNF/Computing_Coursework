@@ -1,28 +1,29 @@
 /**
- * Defines Nodes in Linked List for P3
+ * Defines Nodes in Binary Tree for P4
  * @author Dean Rice
  */
 public class Node 
 {
-    Presidents dData = new Presidents("y", 0, "y", "y", "y", 0, "blank", "blank");
-    public Node next;
-    public Node previous;
+    
+    President fData = new President("y", 0, "y", "y", "y", 0, "blank", "blank");
+    public Node leftChild = null;
+    public Node rightChild = null;
     
     /**
-    * constructor receives attributes of Presidents objects and stores data in Node objects  
+    * constructor receives attributes of President objects and stores data in Node objects  
     * @param  This method expects six strings and two integers
     * @return void 
     */
     public Node(String transaction, int number, String lastName, String firstName, String code, int yearsInOffice, String party, String homeState)
     {
-        dData.changeTransaction(transaction);
-        dData.changeCode(code);
-        dData.changeHomeState(homeState);
-        dData.changeLastName(lastName);
-        dData.changeFirstName(firstName);
-        dData.changeNumber(number);
-        dData.changeParty(party);
-        dData.changeYearsInOffice(yearsInOffice);
+        fData.changeTransaction(transaction);
+        fData.changeCode(code);
+        fData.changeHomeState(homeState);
+        fData.changeLastName(lastName);
+        fData.changeFirstName(firstName);
+        fData.changeNumber(number);
+        fData.changeParty(party);
+        fData.changeYearsInOffice(yearsInOffice);
     }// end constructor
     
     /**
@@ -32,7 +33,8 @@ public class Node
     */
     public void displayNode()
     {
-        System.out.print(dData.toString());
+        
+        System.out.print(fData.toString());
     }//end displayNode()
     
 }// end class Node
