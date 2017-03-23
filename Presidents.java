@@ -164,8 +164,9 @@ public class Presidents
     */
     public String toString()
     { 
-        System.out.printf( "%6s %-20s %-13s %n", number, name, party); 
-        return " "; 
+        System.out.printf( "%3s" + "      " + "%-21s %-13s %n", number, name, party); 
+        return ""; 
     }//end toString()  
 
 }//end class Presidents
+
