@@ -3,7 +3,6 @@
  * @author Dean
  */
 import java.io.*; // needed to read and parse input
-import java.util.*; // needed to use ArrayList
 public class Input 
 {
     /**
@@ -20,7 +19,7 @@ public class Input
         BufferedReader br = new BufferedReader(fr);
         
         int number = 0, yearsInOffice = 0;
-        String inputString, name = null, code = null, party = null, homeState = null;
+        String inputString, transaction = null, name = null, firstName = null, lastName = null, code = null, party = null, homeState = null;
         
         inputString =  br.readLine();   
         
@@ -30,6 +29,9 @@ public class Input
             //System.out.println("TEST");
 
             name = inputString.substring(2, 24).trim();	
+            String[] firstAndLast = name.split("\\s+");
+            firstName = firstAndLast[0];
+            lastName = firstAndLast[1];
             switch (inputString.substring(25, 26)) 
             {
                 case "a":
@@ -43,7 +45,7 @@ public class Input
                     break;
                 default:
                     code = "NA";;
-            }
+            }// end switch
             party = inputString.substring(29, 48).trim();
             homeState = inputString.substring(49, 62).trim();
             
@@ -70,7 +72,7 @@ public class Input
             System.out.println("homeState: " + homeState); */
           
             
-            Presidents tempPres = new Presidents(number, name, code, yearsInOffice, party, homeState);
+            Presidents tempPres = new Presidents(transaction, number, firstName, lastName, code, yearsInOffice, party, homeState);
             myPresArr[i] = tempPres;
             
             // System.out.println("TEST");
@@ -80,25 +82,25 @@ public class Input
         }//end while loop
         
         return myPresArr;
-        
-        
+  
     }// end readPresidents()
     
-     /**
+    
+    /**
     * reads and parses info from Presidents.Update.txt, builds array of updated Presidents objects 
     * @param none
     * @return This method returns an array of updated Presidents objects
     */
     public Presidents[] readPresidentsUpdate() throws IOException
     {
-        int maxSize = 8;
+        int maxSize = 9;
         Presidents [] myPresUpdateArr = new Presidents[maxSize]; 
 
-        FileReader fr = new FileReader("President.Update.txt");
+        FileReader fr = new FileReader("Presidents.Update.txt");
         BufferedReader br = new BufferedReader(fr);
         
         int number = 0, yearsInOffice = 0;
-        String inputString, name = null, code = null, party = null, homeState = null;
+        String inputString, name = null, firstName = null, lastName = null, party = null, transaction = null, homeState = null, code = null;
         
         inputString =  br.readLine();   
         
@@ -107,17 +109,27 @@ public class Input
         {
             //System.out.println("TEST");
 
-            name = inputString.substring(2, 23).trim();	
+            String[] stringArr = inputString.split(",");
             
-            party = inputString.substring(24, 50).trim();
+            transaction = stringArr[0];
+            
+            name = stringArr[1];
+            String[] firstAndLast = name.split("\\s+");
+            firstName = firstAndLast[0];
+            lastName = firstAndLast[1];
+            
+            party = stringArr[2];
+            
+            homeState = stringArr[3];
             
             
-            try {
+            
+           /* try {
                 number = Integer.parseInt(inputString.substring(0, 2));
                 } catch (NumberFormatException e) 
                     {
                        number = Integer.parseInt(inputString.substring(0, 1));
-                    }
+                    }*/
   
             
             /*
@@ -128,7 +140,7 @@ public class Input
             */
           
             
-            Presidents tempPres = new Presidents(number, name, code, yearsInOffice, party, homeState);
+            Presidents tempPres = new Presidents(transaction, number, firstName, lastName, code, yearsInOffice, party, homeState);
             myPresUpdateArr[i] = tempPres;
             
             // System.out.println("TEST");
@@ -138,9 +150,7 @@ public class Input
         }//end while loop
         
         return myPresUpdateArr;
-        
-        
+             
     }// end readPresidentsUpdate()
-           
-    
+          
 }// end class Input

@@ -1,30 +1,35 @@
+
 /**
- * @author Dean Rice (Michael)
- * Represents a president.
+ * @author Dean Rice 
+ * Represents a president
  */
 public class Presidents 
 {
     /** attributes of Presidents objects*/
     private int number, yearsInOffice;
-    private String name, code, party, homeState;      
-            
+    private String name, code, party, homeState, lastName, firstName, transaction;      
+    private int presCounter;       
     /**
     * constructor reserves space for Presidents objects' attributes
     * @param  This method expects two integers and four Strings 
     * @return void
     */
-    public Presidents (int number, String name, String code, int yearsInOffice, String party, String homeState)
+    public Presidents (String transaction, int number, String firstName, String lastName, String code, int yearsInOffice, String party, String homeState)
     {
-            
+        this.transaction = transaction;    
         this.number = number;
         this.name = name;
         this.code = code;
         this.yearsInOffice = yearsInOffice;
         this.party = party;
         this.homeState = homeState;
+        this.firstName = firstName; 
+        this.lastName = lastName; 
+        presCounter++;
+        
     } //end constructor
     
-               
+   
     /**
     * allows user to change number attribute 
     * @param  This method expects one integer 
@@ -46,7 +51,21 @@ public class Presidents
         return number;
     }//end getNumber()
     
-               
+    public void changeTransaction(String updateTransaction)
+    {
+        transaction = updateTransaction;
+    } 
+    
+    /**
+    * allows user to access transaction attribute
+    * @param  none
+    * @return This method returns a String
+    */
+    public String getTransaction()
+    {
+        return transaction;
+    }//end getTransaction()           
+    
     /**
     * allows user to change name attribute
     * @param  This method expects one String
@@ -55,9 +74,8 @@ public class Presidents
     public void changeName(String updateName)
     {
         name = updateName;
-    }//end changeName(String updateName)
+    }//end changeName(String updateName) 
     
-               
     /**
     * allows user to access name attribute
     * @param  none
@@ -68,7 +86,47 @@ public class Presidents
         return name;
     }//end getName()
     
-               
+    /**
+    * allows user to change firstName attribute
+    * @param  This method expects one String
+    * @return void
+    */
+    public void changeFirstName(String updateFirstName)
+    {
+        firstName = updateFirstName;
+    }// end changeFirstName()
+    
+    /**
+    * allows user to access firstName attribute
+    * @param none
+    * @return returns a String
+    */
+    public String getFirstName()
+    {
+        return firstName;
+    }// end getFirstName()
+    
+    /**
+    * allows user to change lastName attribute
+    * @param  This method expects one String
+    * @return void
+    */
+    public void changeLastName(String updateLastName)
+    {
+        lastName = updateLastName;
+    }//end changeLastName
+    
+    /**
+    * allows user to access lastName attribute
+    * @param  none
+    * @return returns a String 
+    */
+    public String getLastName()
+    {
+        return lastName;
+    }// end getLastName()
+    
+          
     /**
     * allows user to change code attribute
     * @param  This method expects one String
@@ -158,13 +216,14 @@ public class Presidents
        
                
     /**
-    * formats and prints number, name, and party attributes
+    * formats and prints lastName, firstName, and homeState attributes
     * @param  none 
     * @return This method returns an empty String
     */
     public String toString()
     { 
-        System.out.printf( "%3s" + "      " + "%-21s %-13s %n", number, name, party); 
+        
+        System.out.printf( "%-14s %-14s %-20s %n", lastName, firstName, homeState); 
         return ""; 
     }//end toString()  
 

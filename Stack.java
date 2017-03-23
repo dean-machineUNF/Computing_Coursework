@@ -1,6 +1,6 @@
 /**
  * @author Dean Rice (Michael)
- * represents a stack
+ * represents a stack for P3
  */
 public class Stack 
 {
@@ -40,7 +40,7 @@ public class Stack
         if (top < 0)
         { 
             System.out.println("Stack is empty");
-            Presidents tempPres = new Presidents(0, "blank", "blank", 0, "blank", "blank");
+            Presidents tempPres = new Presidents("b", 0, "b", "b", "b", 0, "b", "b");
             return tempPres;
         }// end if statements
         else
@@ -57,7 +57,7 @@ public class Stack
          if (top < 0)
         { 
             System.out.println("Stack is empty");
-            Presidents tempPres = new Presidents(0, "blank", "blank", 0, "blank", "blank");
+            Presidents tempPres = new Presidents("b", 0, "b", "b", "b", 0, "b", "b");
             return tempPres;
         }// end if statements
          else return stackArr[top];
@@ -70,13 +70,13 @@ public class Stack
     */
     public void displayStack()
     {   
-        System.out.printf("%-14s %-16s %-1s \n", "Number", "Name", "Party");
+        System.out.printf("%-14s %-16s %-18s %-20s %-1s \n", "Transaction", "First Name", "Last Name", "Party", "Home State");
         System.out.print("\n");
-        System.out.println("Top of stack: ");
+        //System.out.println("Top of stack: ");
         int j = 0;
         for (j = stackArr.length - 1; j >= 0; j--)
-            System.out.print(stackArr[j]);
-        System.out.println("Bottom of stack");
+            System.out.printf("%-14s %-16s %-18s %-20s %-1s \n", stackArr[j].getTransaction(), stackArr[j].getFirstName(), stackArr[j].getLastName(), stackArr[j].getParty(), stackArr[j].getHomeState());
+        //System.out.println("Bottom of stack");
         System.out.println("\n");
     }//end displayStack()
     
