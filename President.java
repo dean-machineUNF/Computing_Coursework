@@ -1,25 +1,26 @@
-
 /**
  * @author Dean Rice 
- * Represents a president
+ * Represents a president for P5
  */
 public class President
 {
-    /** attributes of Presidents objects*/
-    private int number, yearsInOffice;
-    private String name, code, party, homeState, lastName, firstName, transaction;      
+    /** attributes of President objects*/
+    private int number, yearsInOffice, hashKey, probeCount;
+    private String name, party, homeState, lastName, firstName, transaction;      
     private int presCounter;       
+    
     /**
     * constructor reserves space for President objects' attributes
-    * @param  This method expects two integers and four Strings 
+    * @param  This method expects three integers and four Strings 
     * @return void
     */
-    public President (String transaction, int number, String firstName, String lastName, String code, int yearsInOffice, String party, String homeState)
+    public President (int hashKey, String transaction, int number, String firstName, String lastName, int probeCount, int yearsInOffice, String party, String homeState)
     {
+        this.hashKey = hashKey;
         this.transaction = transaction;    
         this.number = number;
         this.name = name;
-        this.code = code;
+        this.probeCount = probeCount;
         this.yearsInOffice = yearsInOffice;
         this.party = party;
         this.homeState = homeState;
@@ -29,7 +30,31 @@ public class President
         
     } //end constructor
     
+    /**
+    * allows user to change hashKey attribute 
+    * @param  This method expects one integer 
+    * @return void
+    */
+    
+    public void changeHashKey(int updateHashKey)
+    {
+        hashKey = updateHashKey;
+    }//end changeHashKey()
    
+               
+    /**
+    * allows user to access hashKey attribute
+    * @param  none
+    * @return This method returns an integer
+    */
+    public int getHashKey()
+    {
+        return hashKey;
+    }//end getHashKey()
+    
+    
+    
+    
     /**
     * allows user to change number attribute 
     * @param  This method expects one integer 
@@ -132,10 +157,10 @@ public class President
     * @param  This method expects one String
     * @return void
     */
-    public void changeCode(String updateCode)
+    public void changeProbeCount(int updateProbeCount)
     {
-        code = updateCode;
-    }//end changeCode(String updateCode)
+        probeCount = updateProbeCount;
+    }//end changeProbeCount()
     
                
     /**
@@ -143,10 +168,10 @@ public class President
     * @param  none 
     * @return This method returns a String 
     */
-    public String getCode()
+    public int getProbeCount()
     {
-        return code;
-    }//end getCode
+        return probeCount;
+    }//end getProbeCount
         
                
     /**
